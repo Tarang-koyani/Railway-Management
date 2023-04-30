@@ -1,0 +1,58 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>My Bookings</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Ticket ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone number</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Date</th>
+						<th>Class</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in range(data|length) %}
+					<tr>
+						<td>
+							{{data[i][0]}}
+						</td>
+						<td>
+							{{data[i][1]}}
+						</td>
+						<td>
+							{{data[i][4]}}
+						</td>
+						<td>
+							{{data[i][3]}}
+						</td>
+						<td>
+							{{data[i][5]}}
+						</td>
+						<td>
+							{{data[i][6]}}
+						</td>
+						<td>
+							{{data[i][2]}}
+						</td>
+						<td>
+							{{data[i][7]}}
+						</td>
+						<td><span class="badge badge-success">Confirmed</span></td>
+						<td>
+							<a href="/cancel_booking?id={{data[i][0]}}">Cancel Booking</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

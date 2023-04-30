@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block body %}
+<div class="invoice">
+    <div class="invoice-header">
+        <h2>Railway Booking Invoice</h2>
+        <p>Date: 22/04/2023</p>
+    </div>
+    <div class="invoice-body">
+        <div>
+            <h3>Booking Details</h3>
+            <p><strong>Train Name:</strong>xyz</p>
+            <p><strong>From:</strong>{{data[3]}} </p>
+            <p><strong>To:</strong>{{data[4]}} </p>
+            <p><strong>Departure Date:</strong> {{data[5]}}</p>
+            <p><strong>Class:</strong> {{data[6]}}</p>
+            <p><strong>Passenger Name:</strong>{{data[0]}}</p>
+        </div>
+        <div>
+            <h3>Payment Details</h3>
+            <p><strong>Payment Method:</strong> Credit Card</p>
+            <p><strong>Card Type:</strong> Mastercard</p>
+            <p><strong>Card Number:</strong> ************1234</p>
+            <p><strong>Total Amount:</strong>{{data[7]}}&#8377;</p>
+            <p><strong>Transaction ID:</strong> 123456</p>
+        </div>
+    </div>
+    <div class="invoice-footer">
+        <p>Thank you for choosing XYZ Express!</p>
+        <h3>Total Amount: {{data[7]}}/-&#8377;</h3>
+    </div>
+</div>
+{% endblock %}
