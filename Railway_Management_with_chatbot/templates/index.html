@@ -1,0 +1,76 @@
+{% extends "layout.html" %} {% block body %}
+<div class="jumbotron my_background " style="color: aliceblue;">
+	<h1 class="display-4">Railway Ticket Booking</h1>
+	<p class="lead">Book your railway tickets online in just a few clicks!</p>
+	<hr class="my-4" />
+	<p>
+		Find trains, check seat availability, and book tickets all in one place.
+	</p>
+	<a class="btn btn-primary btn-lg" href="/bookTicket" role="button">Book Tickets</a>
+</div>
+
+<div class="container mt-5">
+	<form method="POST" action="/">
+		<div class="row">
+			<div class="col-md-4 mb-3">
+				<label for="source">Source Station</label>
+				<!-- <input type="text" class="form-control" id="source" placeholder="Enter source station" /> -->
+				<select class="form-control" name="source" id="source" onchange="getSelectValue(this.value)">
+					<option value="">Select Your Source</option>
+					{%for i in data1%}
+					<option value="{{i}}">{{i}}</option>
+					{%endfor%}
+				</select>
+			</div>
+			<div class="col-md-4 mb-3">
+				<label for="destination">Destination Station</label>
+				<!-- <input type="text" class="form-control" id="destination" placeholder="Enter destination station" /> -->
+				<select class="form-control" name="destination" id="destination">
+					<option value="">Select Your Destination</option>
+					{%for i in data2%}
+					<option value="{{i}}">{{i}}</option>
+					{%endfor%}
+				</select>
+			</div>
+			<div class="col-md-4 mb-3">
+				<label for="date">Date of Journey</label>
+				<input type="date" class="form-control" id="inputdate" name="inputdate"
+					placeholder="Enter Date of Journey" required />
+			</div>
+		</div>
+		<!-- <button class="form-control bg-success" href>Search</button> -->
+		<button class="form-control bg-success"><a href="" id="mySearch" onclick="setmylink()"></a>search</button>
+	</form>
+</div>
+<script>
+	let source = ""
+	let destination = ""
+	let count = 0;
+	const linkElement = document.querySelector("#mySearch");
+	function getSelectValue(select1) {
+		if (select1 != "") {
+			$("#destination option[value='" + select1 + "']").hide();
+		}
+
+	}
+	let selectElement1 = document.querySelector("#destination");
+	selectElement1.addEventListener("change", (event) => {
+		destination = event.target.value;
+		console.log(destination); // this will log the selected value to the console
+	});
+
+	let selectElement2 = document.querySelector("#source");
+	selectElement2.addEventListener("change", (event) => {
+		source = event.target.value;
+		console.log(source); // this will log the selected value to the console
+	});
+	linkElement.addEventListener('click', () => {
+		let link = `/available_train?id1=${source}&id2=${destination}`;
+		linkElement.href = link;
+		console.log(link);
+	});
+
+
+
+</script>
+{% endblock %}

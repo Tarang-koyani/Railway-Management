@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block body %}
+<br>
+<style type="text/css">
+
+</style>
+<table>
+    <thead class="">
+        <tr>
+            <th>PNR</th>
+            <th>Train Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Price</th>
+            <th>Timing</th>
+            <!-- <th></th> -->
+            <th>Book</th>
+        </tr>
+        <!-- Start Styles. Move the 'style' tags and everything between them to between the 'head' tags -->
+    </thead>
+    <tbody>
+        {%for i in all_pnr%}
+        <tr>
+            <td>{{i}}</td>
+            <td>{{all_train_names[0]}}</td>
+            <td>
+                {{my_source}}
+            </td>
+            <td>
+                {{my_destination}}
+            </td>
+            <td>
+                {{my_price[0]}}
+            </td>
+            <td>{{all_train_times[0]}}&nbsp;</td>
+            <td>
+                <a
+                    href="/bookTicket?id1={{my_source}}&id2={{my_destination}}&id3={{my_price[0]}}&id4={{all_train_names[0]}}">Book
+                    Now
+                </a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

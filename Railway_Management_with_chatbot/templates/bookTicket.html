@@ -1,0 +1,90 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Book Ticket</h2>
+			<form id="booking-form" action="/bookTicket" method="POST">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name" name="name" value="{{customers_detail[0][0]}}"
+						required readonly />
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" class="form-control" id="email" name="email" value="{{customers_detail[0][1]}}"
+						required readonly />
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone:</label>
+					<input type="tel" class="form-control" id="phone" name="phone" value="{{customers_detail[0][2]}}"
+						required readonly />
+				</div>
+				<div class="form-group">
+					<label for="from">From:</label>
+					<!-- <input type="text" class="form-control" id="from" name="from" required /> -->
+
+					<select class="form-control" name="from" id="source" required onchange="getSelectValue(this.value)"
+						readonly>
+						<option value="{{my_source}}">{{my_source}}</option>
+						{%for i in data1%}
+						<option value="{{i}}">{{i}}</option>
+						{%endfor%}
+					</select>
+
+				</div>
+				<div class="form-group">
+					<label for="to">To:</label>
+					<!-- <input type="text" class="form-control" id="to" name="to" required /> -->
+					<select class="form-control" name="to" id="destination" required readonly>
+						<option value="{{my_destination}}">{{my_destination}}</option>
+						{%for i in data2%}
+						<option value="{{i}}">{{i}}</option>
+						{%endfor%}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="train">Train Name :</label>
+					<input type="text" class="form-control" id="train" name="my_train" value="{{my_train}}" required
+						readonly />
+				</div>
+				<div class="form-group">
+					<label for="price">Price :</label>
+					<input type="text" class="form-control" id="my_price" name="my_price" value="{{my_price}}" readonly
+						required />
+				</div>
+				<div class="form-group">
+					<label for="date">Date:</label>
+					<input type="date" class="form-control" id="inputdate" name="inputdate" required />
+				</div>
+				<div class="form-group">
+					<label for="class">Class:</label>
+					<select class="form-control" name="class" id="class" required>
+						{%for i in my_class%}
+						<option value="{{i}}">{{i}}</option>
+						{%endfor%}
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Book Now</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+	function getSelectValue(select1) {
+		if (select1 != "") {
+			$("#destination option[value='" + select1 + "']").hide();
+		}
+	}
+	const train = document.querySelector('#train');
+
+	function call_me() {
+		if (train.value === None) {
+			alert('Please fill all required fields');
+		}
+		return
+	}
+
+
+</script>
+{% endblock %}
