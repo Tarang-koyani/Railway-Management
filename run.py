@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from flask import Flask, Response, redirect, render_template, url_for, request, session, flash, jsonify
 import mysql.connector
 from chat import get_response
@@ -6,13 +7,12 @@ import random
 import time
 from message import *
 from datetime import datetime
-import os
 from dotenv import load_dotenv
 load_dotenv()
-app_login = os.environ.get('SECRET_KEY')
 
 app = Flask(__name__)
-app.secret_key = app_login
+app.secret_key = os.environ.get('SECRET_KEY')
+
 dbr = mysql.connector.connect(host='localhost',
                               user='root',
                               database='temp',
@@ -83,7 +83,10 @@ def bookTicket():
         my_source = request.args.get('id1')
         my_destination = request.args.get('id2')
         my_price = request.args.get('id3')
+        my_train = request.args.get('id4')
 
+        if (my_source == None):
+            return render_template('index.html', data1=from_destination, data2=to_destination)
         # print(session['user'])
         customer_name = session['user']
         # select name,email,phone from registers r where r.name = "%s";
@@ -94,7 +97,7 @@ def bookTicket():
             # customers_detail = []
             customers_detail = cr.fetchall()
 
-            return render_template('bookTicket.html',  data1=from_destination, data2=to_destination, my_class=my_class, customers_detail=customers_detail, my_source=my_source, my_destination=my_destination, my_price=my_price)
+            return render_template('bookTicket.html',  data1=from_destination, data2=to_destination, my_class=my_class, customers_detail=customers_detail, my_source=my_source, my_destination=my_destination, my_price=my_price, my_train=my_train)
         except mysql.connector.Error:
             my_msg = "Datbase Error"
             return render_template('Error.html', msg=my_msg)
@@ -107,6 +110,7 @@ def bookTicket():
         my_date = request.form.get('inputdate')
         journey_class = request.form.get('class')
         my_price = request.form.get('my_price')
+        my_train = request.form.get('my_train')
 
         try:
             s = 'INSERT INTO ALL_BOOKING(NAME,EMAIL,PHONE,FROM_DEST,TO_DEST,DATE,CLASS) VALUES(%s,%s,%s,%s,%s,%s,%s);'
@@ -116,12 +120,15 @@ def bookTicket():
             dbr.commit()
             data = list(val)
             data.append(my_price)
-            print(data)
+            # print(data)
+            try:
+                create_pdf_and_sendmail(
+                    name, email, phone, from_dest, to_dest, my_date, journey_class, my_price, my_train)
+            except:
+                return render_template('invoice.html', data=data, my_train=my_train)
 
-            create_pdf_and_sendmail(
-                name, email, phone, from_dest, to_dest, my_date, journey_class)
             # time.sleep(5)
-            return render_template('invoice.html', data=data)
+            return render_template('invoice.html', data=data, my_train=my_train)
 
         except mysql.connector.Error:
             # print(mysql.connector.Error)

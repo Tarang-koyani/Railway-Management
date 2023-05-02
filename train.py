@@ -15,17 +15,12 @@ with open('intents.json', 'r') as f:
 all_words = []
 tags = []
 xy = []
-# loop through each sentence in our intents patterns
 for intent in intents['intents']:
     tag = intent['tag']
-    # add to tag list
     tags.append(tag)
     for pattern in intent['patterns']:
-        # tokenize each word in the sentence
         w = tokenize(pattern)
-        # add to our words list
         all_words.extend(w)
-        # add to xy pair
         xy.append((w, tag))
 
 # stem and lower each word

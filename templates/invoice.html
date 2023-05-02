@@ -7,7 +7,7 @@
     <div class="invoice-body">
         <div>
             <h3>Booking Details</h3>
-            <p><strong>Train Name:</strong>xyz</p>
+            <p><strong>Train Name:</strong>{{my_train}}</p>
             <p><strong>From:</strong>{{data[3]}} </p>
             <p><strong>To:</strong>{{data[4]}} </p>
             <p><strong>Departure Date:</strong> {{data[5]}}</p>
@@ -16,15 +16,11 @@
         </div>
         <div>
             <h3>Payment Details</h3>
-            <p><strong>Payment Method:</strong> Credit Card</p>
-            <p><strong>Card Type:</strong> Mastercard</p>
-            <p><strong>Card Number:</strong> ************1234</p>
             <p><strong>Total Amount:</strong>{{data[7]}}&#8377;</p>
-            <p><strong>Transaction ID:</strong> 123456</p>
         </div>
     </div>
     <div class="invoice-footer">
-        <p>Thank you for choosing XYZ Express!</p>
+        <p>Thank you for visiting our website !! Enjoy journey with {{my_train}} !!!!</p>
         <h3>Total Amount: {{data[7]}}/-&#8377;</h3>
     </div>
 </div>

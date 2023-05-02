@@ -8,23 +8,24 @@
 				<div class="form-group">
 					<label for="name">Name:</label>
 					<input type="text" class="form-control" id="name" name="name" value="{{customers_detail[0][0]}}"
-						required />
+						required readonly />
 				</div>
 				<div class="form-group">
 					<label for="email">Email:</label>
 					<input type="email" class="form-control" id="email" name="email" value="{{customers_detail[0][1]}}"
-						required />
+						required readonly />
 				</div>
 				<div class="form-group">
 					<label for="phone">Phone:</label>
 					<input type="tel" class="form-control" id="phone" name="phone" value="{{customers_detail[0][2]}}"
-						required />
+						required readonly />
 				</div>
 				<div class="form-group">
 					<label for="from">From:</label>
 					<!-- <input type="text" class="form-control" id="from" name="from" required /> -->
 
-					<select class="form-control" name="from" id="source" required onchange="getSelectValue(this.value)">
+					<select class="form-control" name="from" id="source" required onchange="getSelectValue(this.value)"
+						readonly>
 						<option value="{{my_source}}">{{my_source}}</option>
 						{%for i in data1%}
 						<option value="{{i}}">{{i}}</option>
@@ -35,7 +36,7 @@
 				<div class="form-group">
 					<label for="to">To:</label>
 					<!-- <input type="text" class="form-control" id="to" name="to" required /> -->
-					<select class="form-control" name="to" id="destination" required>
+					<select class="form-control" name="to" id="destination" required readonly>
 						<option value="{{my_destination}}">{{my_destination}}</option>
 						{%for i in data2%}
 						<option value="{{i}}">{{i}}</option>
@@ -43,8 +44,13 @@
 					</select>
 				</div>
 				<div class="form-group">
+					<label for="train">Train Name :</label>
+					<input type="text" class="form-control" id="train" name="my_train" value="{{my_train}}" required
+						readonly />
+				</div>
+				<div class="form-group">
 					<label for="price">Price :</label>
-					<input type="text" class="form-control" id="my_price" name="my_price" value="{{my_price}}"
+					<input type="text" class="form-control" id="my_price" name="my_price" value="{{my_price}}" readonly
 						required />
 				</div>
 				<div class="form-group">
@@ -70,5 +76,15 @@
 			$("#destination option[value='" + select1 + "']").hide();
 		}
 	}
+	const train = document.querySelector('#train');
+
+	function call_me() {
+		if (train.value === None) {
+			alert('Please fill all required fields');
+		}
+		return
+	}
+
+
 </script>
 {% endblock %}

@@ -8,15 +8,11 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE
 from email import encoders
 from reportlab.pdfgen import canvas
-import pdfkit
 from dotenv import load_dotenv
-import random
 
-from datetime import datetime
 
 load_dotenv()
 password = os.environ.get('MY_PASSWORD')
-socket.getaddrinfo('localhost', 8080)
 
 
 def send_email(to, subject, text, files):
@@ -47,13 +43,11 @@ def send_email(to, subject, text, files):
     smtp_server.close()
 
 
-def create_pdf_and_sendmail(name, email, phone, source, destination, date, train_class):
-    
+def create_pdf_and_sendmail(name, email, phone, source, destination, date, train_class, my_price, my_train):
+
     c = canvas.Canvas("RailwayTicket.pdf")
 
     c.setFont('Helvetica', 12)
-
-    top_margin = 25 * mm
 
     c.roundRect(50, 750, 500, 80, 20, stroke=1, fill=0)
     c.drawCentredString(300, 790, "Railway Ticket")
@@ -66,30 +60,34 @@ def create_pdf_and_sendmail(name, email, phone, source, destination, date, train
     c.drawString(70, 685, "Name:")
     c.drawString(70, 665, "Email:")
     c.drawString(70, 645, "Phone:")
-    c.drawString(70, 625, "Source:")
-    c.drawString(70, 605, "Destination:")
-    c.drawString(70, 585, "Date:")
-    c.drawString(70, 565, "Train Class:")
+    c.drawString(70, 625, "Your Booked Trains Name :")
+    c.drawString(70, 605, "Source:")
+    c.drawString(70, 585, "Destination:")
+    c.drawString(70, 565, "Date:")
+    c.drawString(70, 545, "Train Class:")
+    c.drawString(70, 525, "Total amount :")
 
     # Draw the actual ticket information
     c.drawString(270, 685, name)
     c.drawString(270, 665, email)
     c.drawString(270, 645, phone)
-    c.drawString(270, 625, source)
-    c.drawString(270, 605, destination)
-    c.drawString(270, 585, str(date))
-    c.drawString(270, 565, train_class)
+    c.drawString(270, 625, my_train)
+    c.drawString(270, 605, source)
+    c.drawString(270, 585, destination)
+    c.drawString(270, 565, str(date))
+    c.drawString(270, 545, train_class)
+    c.drawString(270, 525, my_price)
 
     # Add the railway logo to the ticket
-    # logo_path = os.path.join(os.path.dirname(__file__), 'railway_logo.png')
-    # c.drawImage(logo_path, 450, 680, width=70, height=70)
+    logo_path = "./static/images/train.png"
+    c.drawImage(logo_path, 450, 680, width=70, height=70)
 
     # Draw the footer of the ticket
-    c.line(50, 560, 550, 560)
-    c.drawCentredString(300, 540, "Thank you for choosing the railways!")
+    # c.line(50, 560, 515, 560)
+    c.drawCentredString(300, 480, "Thank you for choosing the railways!")
     c.drawCentredString(
-        300, 520, "Please keep this ticket with you at all times.")
-    c.drawCentredString(300, 500, "Have a safe and enjoyable journey!")
+        300, 460, "Please keep this ticket with you at all times.")
+    c.drawCentredString(300, 440, "Have a safe and enjoyable journey!")
 
     c.save()
     send_email(to=email, subject='Your booked Railway Ticket',

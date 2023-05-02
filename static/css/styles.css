@@ -143,7 +143,10 @@ td {
 	margin: 0;
 	padding: 0;
 }
-
+.my_background {
+	background-image: url("../images/background.jpg");
+	background-size: cover;
+}
 body {
 	font-family: "Nunito", sans-serif;
 	font-weight: 400;

@@ -26,7 +26,42 @@ s = "insert into trains values(97645753,'Vande Bharat','Delhi','Mumbai','16:30:0
 cr.execute(s)
 dbr.commit()
 
-s = "insert into trains values(37531885,'Jammu Tavi Express','Ahmedabad','Jammu','04:15:00','850');"
+
+s = "insert into trains values(37534585,'Jammu Tavi Express','Delhi','Jammu','04:15:00','850');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(47241559,'Shatabdi Express','Delhi','Bhopal','19:30:00','850');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(92144785,'Shatabdi Express','Delhi','Pune','04:30:00','450');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(93461646,'Tejas Express','Delhi','Bangalore','07:30:00','399');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(36875768,'Vande Bharat Express','Delhi','Kolkata','11:30:00','450');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(65418831,'Delhi Express','Delhi','Kanyakumari','13:30:00','699');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(95118791,'Intercity Express','Delhi','Jamnagar','17:30:00','450');"
+cr.execute(s)
+dbr.commit()
+
+s = "insert into trains values(95118491,'Intercity Express','Ahmedabad','Jamnagar','17:30:00','450');"
 cr.execute(s)
 dbr.commit()
 
@@ -34,17 +69,14 @@ s = "insert into trains values(47245359,'Shatabdi Express','New Delhi','Bhopal',
 cr.execute(s)
 dbr.commit()
 
+s = "insert into trains values(37531885,'Jammu Tavi Express','Ahmedabad','Jammu','04:15:00','850');"
+cr.execute(s)
+dbr.commit()
+
 s = "insert into trains values(92144753,'Shatabdi Express','Ahmedabad','Pune','04:30:00','450');"
 cr.execute(s)
 dbr.commit()
 
-s = "insert into trains values(45698515,'Duronto Express','Jaipur','Ahmedabad','10:30:00','350');"
-cr.execute(s)
-dbr.commit()
-
-s = "insert into trains values(93461646,'Tejas Express','Delhi','Bangalore','07:30:00','399');"
-cr.execute(s)
-dbr.commit()
 
 s = "insert into trains values(92145631,'Karnavati Express','Mumbai','Ahmedabad','23:30:00','450');"
 cr.execute(s)
@@ -58,14 +90,49 @@ s = "insert into trains values(94456231,'Sampark Kranti Express','New Delhi','Pu
 cr.execute(s)
 dbr.commit()
 
-s = "insert into trains values(36875768,'Vande Bharat Express','Delhi','Kolkata','11:30:00','450');"
-cr.execute(s)
-dbr.commit()
-
 s = "insert into trains values(65418231,'Vivek Express','Dibrugarh','Kanyakumari','13:30:00','599');"
 cr.execute(s)
 dbr.commit()
 
-s = "insert into trains values(95118491,'Intercity Express','Ahmedabad','Jamnagar','17:30:00','450');"
+s = "insert into trains values(92145000,'Rajdhani Express','Jaipur','Ahmedabad','06:30:00','500');"
+cr.execute(s)
+dbr.commit()
+
+s = "insert into trains values(97645001,'Vande Bharat','Jaipur','Mumbai','16:30:00','250');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(37535002,'Jammu Tavi Express','Jaipur','Jammu','04:15:00','850');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(47245003,'Shatabdi Express','Jaipur','Bhopal','19:30:00','850');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(92145004,'Shatabdi Express','Jaipur','Pune','04:30:00','450');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(93465005,'Tejas Express','Jaipur','Bangalore','07:30:00','399');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(36875006,'Vande Bharat Express','Jaipur','Kolkata','11:30:00','450');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(65415007,'Delhi Express','Jaipur','Kanyakumari','13:30:00','699');"
+cr.execute(s)
+dbr.commit()
+
+
+s = "insert into trains values(95115008,'Intercity Express','Jaipur','Jamnagar','17:30:00','450');"
 cr.execute(s)
 dbr.commit()
