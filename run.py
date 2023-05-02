@@ -16,7 +16,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 dbr = mysql.connector.connect(host='localhost',
                               user='root',
                               database='temp',
-                              password='Admin123,'
+                              password=''
                               )
 
 cr = dbr.cursor()
